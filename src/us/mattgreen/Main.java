@@ -15,10 +15,16 @@ public class Main {
         ArrayList<Talkable> zoo = new ArrayList<>();
 
         // Lines to Replace
-        zoo.add(new Dog(true, "Pete"));
-        zoo.add(new Cat(9, "Anne Belly"));
-        zoo.add(new Student(19, "Joe John Johnson"));
+//        zoo.add(new Dog(true, "Pete"));
+//        zoo.add(new Cat(9, "Anne Belly"));
+//        zoo.add(new Student(19, "Joe John Johnson"));
         // End Lines to Replace
+        
+        AnimalInput input = new AnimalInput(zoo);
+        input.addAnimal();
+        input.addAnimal();
+        input.addAnimal();
+        
 
         for (Talkable thing : zoo) {
             printOut(thing);
