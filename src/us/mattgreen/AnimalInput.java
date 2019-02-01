@@ -14,9 +14,11 @@ import javax.swing.JOptionPane;
  */
 public class AnimalInput {
     private ArrayList zoo;
+    private InputTypeVerifier tester;
     public AnimalInput(ArrayList<Talkable> zoo)
     {
         this.zoo = zoo;
+        tester = new InputTypeVerifier();
 
     }
     public void addAnimal()
@@ -40,16 +42,19 @@ public class AnimalInput {
     }
     public int animalType()
     {
+        String input;
         int aType = 0;
        
         while(aType == 0)
         {
             try
             {
-                aType = Integer.parseInt(JOptionPane.showInputDialog("Enter animal type:\n1. Cat\n2. Dog\n3. Student\n"));
+                
+                aType = tester.checkInt(JOptionPane.showInputDialog("Enter animal type:\n1. Cat\n2. Dog\n3. Student\n"), 1);
                 if(aType > 3 || aType < 1)
                 {
                     aType = 0;
+                    JOptionPane.showMessageDialog(null, "Invalid selection. Please enter a valid value.");
                 } 
             }
             catch(Exception e)
@@ -69,10 +74,11 @@ public class AnimalInput {
         {
             try
             {
-                input = Integer.parseInt(JOptionPane.showInputDialog("Is the animal friendly?\n1. Yes\n2. No"));
+                input = tester.checkInt(JOptionPane.showInputDialog("Is the animal friendly?\n1. Yes\n2. No"), 1);
                 if(input > 2 || input < 1)
                 {
                     input = 0;
+                    JOptionPane.showMessageDialog(null, "Invalid selection. Please enter a valid value.");
                 }
             }
             catch(Exception e)
@@ -98,7 +104,7 @@ public class AnimalInput {
         {
             try
             {
-                kills = Integer.parseInt(JOptionPane.showInputDialog("How many mice has it killed?"));
+                kills = tester.checkInt(JOptionPane.showInputDialog("How many mice has it killed?"), 0);
             }
             catch(Exception e)
             {
@@ -133,7 +139,7 @@ public class AnimalInput {
         {
             try
             {
-                age = Integer.parseInt(JOptionPane.showInputDialog("How old is he/she?"));
+                age = tester.checkInt(JOptionPane.showInputDialog("How old is he/she?"), 1);
                 
             }
             catch(Exception e)
